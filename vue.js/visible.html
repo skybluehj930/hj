@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <div id='app'>
+            <h1 v-if="visible">나는 보입니다.</h1> 
+            <h1 v-show="visible">나는 보입니다.</h1> 
+            <!-- v-show 내용 처리를 먼저 하기 때문에 v-if를 사용하는 것을 권장 -->
+        </div>
+            <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+            <script>
+                var firstApp = new Vue({
+                        el: '#app', 
+                        data: {
+                            visible: true
+                        }
+    
+                });
+            </script>          
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="utf-8"/> 
+    </head>
+    <body>
+        <div id='app'>
+            <div>{{ message }}</div>
+            <input type="text" v-model="message"/>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script>
+            var firstApp = new Vue({
+                    el: '#app', 
+                    data: {
+                        message: '첫 번째 vv'
+                    }
+
+            });
+        </script>
+    </body>
+</html>

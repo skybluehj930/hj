@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <div id='app'>
+            <h1 v-if="visible">나는 보입니다.</h1>
+            <button v-on:click="visible = !visible">visible 버튼</button>
+            <button @click="alert('버튼을 클릭했습니다.')"> 원 클릭 버튼</button>
+            <button @dblclick="alert('더블 버튼을 클릭했습니다.')">더블 클릭  버튼</button> 
+            <hr/>
+            
+            <!-- 사용자 정의 메소드 호출 -->
+            <button @click="add()">add 버튼</button>
+            <button @click="remove()">remove 버튼</button>
+            <ul>
+                <li v-for="n in numbers">{{ n }}</li>    
+            </ul>   
+            <hr/>   
+            
+            <input type="text" v-model="animal" v-on:keyup.enter="capture()">
+            <ul>
+                <li v-for="animal in animals">{{ animal }}</li>    
+            </ul>  
+            <hr/>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script>
+            var firstApp = new Vue({
+                el: '#app', 
+                data: {
+                    visible: true,
+                    numbers: [1, 2, 3, 4, 5],
+                    animal: null,
+                    animals: ['lion', 'tiger', 'dog', 'cat', 'eagle']
+                }, 
+                methods: {
+                    add: function() {
+                       var lastNum = this.numbers[this.numbers.length - 1];
+                       lastNum += 1; 
+                       this.numbers.push(lastNum);
+                    }, 
+                    remove: function() {
+                        this.numbers.splice(this.numbers.length - 1);
+                    },
+                    capture: function() {
+                        if (this.animal) {
+                            this.animals.push(this.animal);
+                            this.animal = null;
+                        }
+                    }
+                }
+            });
+        </script>          
+    </body>
+</html>

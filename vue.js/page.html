@@ -1,0 +1,41 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="utf-8"/> 
+        <style>
+            button {
+                background: white;
+                border: 1px solid, gray;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+            button.active {
+                background:  blue;
+                color: white;
+                border-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='app'>
+            <button v-for="p in pages" @click="page = p" v-bind:class="{ 'active' : page === p }">{{ p }}</button>
+            <hr/>
+            <div v-for="p in pages" v-if="page === p">
+                <p>{{ p }} contens</p>
+                <img :src="'img/'+ p + '.png'"/>
+            </div>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script>
+            var firstApp = new Vue({
+                    el: '#app', 
+                    data: {
+                        page: 'page1',
+                        pages: ['page1', 'page2', 'page3', 'page4']
+                    }
+
+            });
+        </script>
+    </body>
+</html>
