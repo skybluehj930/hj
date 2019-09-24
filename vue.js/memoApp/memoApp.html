@@ -9,17 +9,23 @@
     </head>
     <body>
         <div id="app" class="app">
-            <div class="head">메모 앱</div>
+            <div class="head">
+               <span class="title">메모 앱</span>
+               <span class="list-btn" v-if="mode !== 'list'" @click="cancel()">&lt;</span>
+            </div>
             <div class="body">
                 <div class="list" v-if="mode === 'list'">
                     <ul>
-                        <li v-for="m in memos">{{ m.content }}</li>
+                        <li v-for="m in memos" @click="open(m.id)">{{ m.content }} : {{ m.regDate }}</li>
                     </ul>
                 </div>
                 <div class="write" v-else>
-                    <textarea></textarea>
+                    <textarea v-model="memo.content"></textarea>
+                    <button class="save-btn" @click="save()" :class="{'full' : mode === 'write'}">저장</button>
+                    <!-- <button class="cancel-btn" @click="cancel()">취소</button> -->
+                    <button class="cancel-btn" @click="remove()" v-if="mode === 'edit'">삭제</button>
                 </div>
-                <button class="add-btn" type="button" @click="write()">+</button>
+                <button class="add-btn" type="button" @click="write()" v-if="mode === 'list'">+</button>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>

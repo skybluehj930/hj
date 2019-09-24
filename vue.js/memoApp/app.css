@@ -1,12 +1,26 @@
-.app .head {
-    font-size: 20px;
+.app > .head {
     padding: 20px;
     background: #07c;
-    color: #fff;
     text-align: center;
     border-bottom: 1px solidm #ddd;
+    position: relative;
+}
+
+.app > .head .title {
+    font-size: 20px;
+    color: #fff;
     font-weight: bold;
 }  
+
+.app > .head .list-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    float: left;
+    font-size: 15px;
+    color: #fff;
+    padding: 20px;
+}
 
 .app > .body ul {
     list-style: none;
@@ -34,4 +48,8 @@
     border-radius: 50%;
     line-height: 0;
     outline: 0;
+}
+
+.app > .body .full {
+    width: 100%;
 }
